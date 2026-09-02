@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jordan Reyes — Creative Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --base: #fbfaf7;
+    --base-2: #f4f1ec;
+    --ink: #23202b;
+    --muted: #6e6a78;
+    --line: rgba(35,32,43,0.1);
+    --blush: #ffd3e0;
+    --sky: #cfe8ff;
+    --lav: #e3d8ff;
+    --gold: #fff0cf;
+    --violet: #5b4b8a;
+    --violet-deep: #3e3162;
+    --radius-lg: 28px;
+    --radius-sm: 14px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--base);
+    color: var(--ink);
+    font-family: 'Sora', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  p { margin: 0; color: var(--muted); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .wrap{
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  @media (max-width: 640px){
+    .wrap{ padding: 0 20px; }
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(251,250,247,0.82);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+
+  .wordmark{
+    font-family:'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  nav.tabs{
+    display:flex;
+    gap: 4px;
+    background: var(--base-2);
+    padding: 5px;
+    border-radius: 999px;
+    position: relative;
+  }
+
+  nav.tabs a{
+    position: relative;
+    z-index: 2;
+    padding: 9px 18px;
+    font-size: 14px;
+    color: var(--muted);
+    border-radius: 999px;
+    transition: color .25s ease;
+    white-space: nowrap;
+  }
+
+  nav.tabs a.active{ color: var(--base); }
+
+  .tab-pill{
+    position:absolute;
+    top:5px; bottom:5px;
+    background: var(--ink);
+    border-radius: 999px;
+    z-index:1;
+    transition: left .35s cubic-bezier(.65,0,.35,1), width .35s cubic-bezier(.65,0,.35,1);
+  }
+
+  .nav-cta{
+    font-size: 14px;
+    padding: 9px 18px;
+    border: 1px solid var(--ink);
+    border-radius: 999px;
+    display: none;
+  }
+  @media (min-width: 860px){ .nav-cta{ display:inline-block; } }
+
+  .nav-toggle{ display:none; background:none; border:none; cursor:pointer; padding:8px; }
+  .nav-toggle svg{ display:block; }
+
+  @media (max-width: 860px){
+    nav.tabs{ display:none; }
+    .nav-toggle{ display:block; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position: relative;
+    overflow: hidden;
+    padding: 120px 0 100px;
+  }
+
+  .mesh{
+    position:absolute;
+    inset: -20% -10% auto -10%;
+    height: 640px;
+    z-index: 0;
+    filter: blur(60px);
+    opacity: .8;
+    pointer-events:none;
+  }
+  .mesh div{ position:absolute; border-radius: 50%; }
+  .mesh .b1{ width:420px; height:420px; background: var(--blush); top: -120px; left: 6%; }
+  .mesh .b2{ width:380px; height:380px; background: var(--sky); top: -60px; right: 8%; }
+  .mesh .b3{ width:320px; height:320px; background: var(--lav); bottom: -180px; left: 38%; }
+  .mesh .b4{ width:260px; height:260px; background: var(--gold); top: 120px; right: 30%; }
+
+  .hero-inner{ position: relative; z-index: 1; }
+
+  .eyebrow{
+    font-size: 14px;
+    color: var(--violet);
+    margin-bottom: 20px;
+  }
+
+  .hero h1{
+    font-size: clamp(40px, 6vw, 74px);
+    line-height: 1.04;
+    max-width: 15ch;
+  }
+
+  .hero-sub{
+    display:flex;
+    gap: 60px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-sub p{
+    max-width: 42ch;
+    font-size: 17px;
+    color: var(--ink);
+    opacity: .75;
+  }
+
+  .hero-actions{
+    display:flex;
+    gap:14px;
+    margin-top: 8px;
+    flex-wrap: wrap;
+  }
+
+  .btn{
+    padding: 13px 24px;
+    border-radius: 999px;
+    font-size: 14px;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+
+  .btn-primary{
+    background: var(--ink);
+    color: var(--base);
+  }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 10px 24px rgba(35,32,43,0.25); }
+
+  .btn-ghost{
+    border: 1px solid var(--line);
+  }
+  .btn-ghost:hover{ border-color: var(--ink); }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding: 96px 0; }
+  section.tight{ padding: 64px 0; }
+
+  .section-head{
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .section-head h2{ font-size: clamp(30px, 4vw, 42px); }
+  .section-head .num{ font-size: 14px; color: var(--muted); }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 64px;
+    align-items: center;
+  }
+  @media (max-width: 800px){ .about-grid{ grid-template-columns: 1fr; } }
+
+  .portrait{
+    aspect-ratio: 4/5;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(155deg, var(--lav), var(--sky) 55%, var(--blush));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color: rgba(35,32,43,0.55);
+    font-size: 14px;
+    padding: 24px;
+    position: relative;
+  }
+  .portrait span{ max-width: 20ch; }
+
+  .about-copy p{ font-size: 17px; color: var(--ink); opacity: .8; }
+  .about-copy p + p{ margin-top: 18px; }
+
+  .facts{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .facts div{
+    border-top: 1px solid var(--line);
+    padding-top: 14px;
+  }
+  .facts .fact-label{ font-size: 13px; color: var(--muted); }
+  .facts .fact-value{ font-family:'Fraunces', serif; font-size: 22px; margin-top: 4px; }
+
+  /* ---------- SERVICES (tabs) ---------- */
+  .services-shell{
+    display:grid;
+    grid-template-columns: 320px 1fr;
+    gap: 12px;
+    background: var(--base-2);
+    border-radius: var(--radius-lg);
+    padding: 12px;
+  }
+  @media (max-width: 800px){ .services-shell{ grid-template-columns: 1fr; } }
+
+  .service-list{ display:flex; flex-direction: column; gap: 4px; }
+
+  .service-item{
+    text-align:left;
+    width: 100%;
+    padding: 18px 20px;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    gap: 12px;
+    font-family:'Sora', sans-serif;
+    color: var(--muted);
+    transition: background .25s ease, color .25s ease;
+  }
+  .service-item .stitle{ font-size: 15px; color: inherit; }
+  .service-item .sarrow{ opacity:0; transform: translateX(-4px); transition: all .25s ease; }
+
+  .service-item.active{
+    background: var(--base);
+    box-shadow: 0 4px 18px rgba(35,32,43,0.06);
+  }
+  .service-item.active .stitle{ color: var(--ink); font-weight: 500; }
+  .service-item.active .sarrow{ opacity: 1; transform: translateX(0); color: var(--violet); }
+
+  .service-panel{
+    background: var(--base);
+    border-radius: var(--radius-sm);
+    padding: 44px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 320px;
+  }
+  @media (max-width: 640px){ .service-panel{ padding: 28px; } }
+
+  .service-panel .stag{
+    font-size: 13px;
+    color: var(--violet);
+    margin-bottom: 14px;
+  }
+  .service-panel h3{ font-size: 28px; margin-bottom: 16px; }
+  .service-panel p{ font-size: 16px; max-width: 52ch; }
+
+  .service-panel ul{
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .service-panel li{
+    font-size: 13px;
+    padding: 7px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink);
+    opacity: .75;
+  }
+
+  /* ---------- PORTFOLIO ---------- */
+  .filter-row{
+    display:flex;
+    gap: 8px;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+  }
+  .filter-btn{
+    padding: 9px 18px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    font-size: 14px;
+    color: var(--muted);
+    cursor:pointer;
+    background: transparent;
+    transition: all .2s ease;
+  }
+  .filter-btn.active{
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--base);
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  @media (max-width: 900px){ .grid{ grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 600px){ .grid{ grid-template-columns: 1fr; } }
+
+  .card{
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: var(--base-2);
+    border: 1px solid var(--line);
+    display: none;
+  }
+  .card.show{ display:block; }
+
+  .card-media{
+    aspect-ratio: 4/3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align: center;
+    padding: 20px;
+    color: rgba(35,32,43,0.5);
+    font-size: 13px;
+  }
+  .card-media span{ max-width: 22ch; }
+
+  .card[data-cat="writing"] .card-media{ background: linear-gradient(160deg, var(--gold), var(--blush)); }
+  .card[data-cat="photo"] .card-media{ background: linear-gradient(160deg, var(--sky), var(--lav)); }
+  .card[data-cat="logo"] .card-media{ background: linear-gradient(160deg, var(--lav), var(--gold)); }
+
+  .card-body{ padding: 18px 20px 22px; }
+  .card-body .ctag{ font-size: 12px; color: var(--violet); margin-bottom: 6px; display:block; }
+  .card-body h4{ font-family:'Fraunces', serif; font-size: 18px; font-weight: 500; margin: 0 0 6px; }
+  .card-body p{ font-size: 14px; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-panel{
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--violet-deep), var(--violet));
+    color: var(--base);
+    padding: 72px 56px;
+    display:grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+  @media (max-width: 800px){ .contact-panel{ grid-template-columns: 1fr; padding: 48px 32px; } }
+
+  .contact-panel h2{ color: var(--base); font-size: clamp(28px, 4vw, 40px); }
+  .contact-panel p{ color: rgba(251,250,247,0.75); margin-top: 14px; max-width: 40ch; }
+
+  .contact-links{ display:flex; flex-direction: column; gap: 14px; }
+  .contact-links a{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(251,250,247,0.2);
+    font-size: 15px;
+    color: var(--base);
+  }
+  .contact-links a span.arrow{ opacity: .6; transition: transform .2s ease, opacity .2s ease; }
+  .contact-links a:hover span.arrow{ transform: translateX(4px); opacity: 1; }
+
+  footer{
+    padding: 40px 0 60px;
+    display:flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* mobile nav sheet */
+  .mobile-sheet{
+    display:none;
+    position: fixed;
+    inset: 0;
+    background: var(--base);
+    z-index: 200;
+    padding: 24px 28px;
+    flex-direction: column;
+  }
+  .mobile-sheet.open{ display:flex; }
+  .mobile-sheet .close-row{ display:flex; justify-content: flex-end; }
+  .mobile-sheet a{
+    font-family:'Fraunces', serif;
+    font-size: 30px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="wordmark">Jordan Reyes</div>
+    <nav class="tabs" id="tabs">
+      <div class="tab-pill" id="tabPill"></div>
+      <a href="#about" class="active">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Start a project</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <svg width="22" height="16" viewBox="0 0 22 16" fill="none"><path d="M0 1H22M0 8H22M0 15H22" stroke="#23202b" stroke-width="1.6"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-sheet" id="mobileSheet">
+  <div class="close-row">
+    <button class="nav-toggle" id="navClose" aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 20 20"><path d="M1 1L19 19M19 1L1 19" stroke="#23202b" stroke-width="1.6"/></svg>
+    </button>
+  </div>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#work">Portfolio</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<section class="hero">
+  <div class="mesh"><div class="b1"></div><div class="b2"></div><div class="b3"></div><div class="b4"></div></div>
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Portfolio — Brand, Content &amp; Digital Strategy</div>
+    <h1>Ideas that read well, look well, and grow well.</h1>
+    <div class="hero-sub">
+      <p>I'm a creative generalist working across brand, writing, and digital strategy — for myself, for freelance clients, and hopefully for you next. This is a running collection of the work.</p>
+      <div class="hero-actions">
+        <a href="#work" class="btn btn-primary">View the work</a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>About</h2>
+      <span class="num">01</span>
+    </div>
+    <div class="about-grid">
+      <div class="portrait"><span>Replace with a photo of you — square or 4:5 works best here</span></div>
+      <div class="about-copy">
+        <p>Write two or three short paragraphs here about who you are, what kind of work energizes you, and the thread that connects marketing, writing, photography, and design for you. Keep it conversational — this is the part people read to decide if they want to work with you.</p>
+        <p>Mention where you've worked or what you've built so far, what you're looking for next (in-house role, freelance clients, or both), and one detail that makes you memorable.</p>
+        <div class="facts">
+          <div><div class="fact-label">Based in</div><div class="fact-value">Calgary, AB</div></div>
+          <div><div class="fact-label">Focus</div><div class="fact-value">Brand &amp; Content</div></div>
+          <div><div class="fact-label">Open to</div><div class="fact-value">Roles &amp; Freelance</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Services</h2>
+      <span class="num">02</span>
+    </div>
+    <div class="services-shell">
+      <div class="service-list" id="serviceList">
+        <button class="service-item active" data-i="0"><span class="stitle">Marketing &amp; Brand</span><span class="sarrow">→</span></button>
+        <button class="service-item" data-i="1"><span class="stitle">Digital &amp; Growth</span><span class="sarrow">→</span></button>
+        <button class="service-item" data-i="2"><span class="stitle">Social &amp; Content</span><span class="sarrow">→</span></button>
+        <button class="service-item" data-i="3"><span class="stitle">Communications</span><span class="sarrow">→</span></button>
+        <button class="service-item" data-i="4"><span class="stitle">Business &amp; Digital Organization</span><span class="sarrow">→</span></button>
+      </div>
+      <div class="service-panel" id="servicePanel"></div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <span class="num">03</span>
+    </div>
+    <div class="filter-row" id="filterRow">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="writing">Writing</button>
+      <button class="filter-btn" data-filter="photo">Photography</button>
+      <button class="filter-btn" data-filter="logo">Logos &amp; Brand</button>
+    </div>
+    <div class="grid" id="grid">
+      <div class="card show" data-cat="writing">
+        <div class="card-media"><span>Writing sample — swap for a screenshot or PDF cover</span></div>
+        <div class="card-body"><span class="ctag">Writing</span><h4>Piece title</h4><p>One line on the publication, client, or context.</p></div>
+      </div>
+      <div class="card show" data-cat="photo">
+        <div class="card-media"><span>Photo — drop in a shot from your portfolio</span></div>
+        <div class="card-body"><span class="ctag">Photography</span><h4>Series or shoot name</h4><p>Where and when it was taken.</p></div>
+      </div>
+      <div class="card show" data-cat="logo">
+        <div class="card-media"><span>Logo / brand mark</span></div>
+        <div class="card-body"><span class="ctag">Brand</span><h4>Client or project name</h4><p>Short line on the brief.</p></div>
+      </div>
+      <div class="card show" data-cat="photo">
+        <div class="card-media"><span>Photo — drop in a shot from your portfolio</span></div>
+        <div class="card-body"><span class="ctag">Photography</span><h4>Series or shoot name</h4><p>Where and when it was taken.</p></div>
+      </div>
+      <div class="card show" data-cat="writing">
+        <div class="card-media"><span>Writing sample</span></div>
+        <div class="card-body"><span class="ctag">Writing</span><h4>Piece title</h4><p>One line on the publication, client, or context.</p></div>
+      </div>
+      <div class="card show" data-cat="logo">
+        <div class="card-media"><span>Logo / brand mark</span></div>
+        <div class="card-body"><span class="ctag">Brand</span><h4>Client or project name</h4><p>Short line on the brief.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="tight">
+  <div class="wrap">
+    <div class="contact-panel">
+      <div>
+        <h2>Let's build something.</h2>
+        <p>Open to full-time roles, freelance projects, and anything in between. Reach out and I'll get back to you within a couple of days.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:hello@jordanreyes.com"><span>Email</span><span class="arrow">→</span></a>
+        <a href="#"><span>LinkedIn</span><span class="arrow">→</span></a>
+        <a href="#"><span>Instagram</span><span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>© 2026 Jordan Reyes</span>
+  <span>Built with care in Calgary</span>
+</footer>
+
+<script>
+  // ---- Tab pill nav ----
+  const tabsNav = document.getElementById('tabs');
+  const pill = document.getElementById('tabPill');
+  const tabLinks = tabsNav.querySelectorAll('a');
+
+  function movePill(el){
+    pill.style.left = el.offsetLeft + 'px';
+    pill.style.width = el.offsetWidth + 'px';
+  }
+  window.addEventListener('load', () => movePill(tabsNav.querySelector('a.active')));
+  window.addEventListener('resize', () => movePill(tabsNav.querySelector('a.active')));
+
+  tabLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      tabLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      movePill(link);
+    });
+  });
+
+  // highlight nav on scroll
+  const sections = ['about','services','work','contact'].map(id => document.getElementById(id));
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const id = entry.target.id;
+        const link = tabsNav.querySelector(`a[href="#${id}"]`);
+        if(link){
+          tabLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+          movePill(link);
+        }
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s => s && io.observe(s));
+
+  // ---- mobile sheet ----
+  const sheet = document.getElementById('mobileSheet');
+  document.getElementById('navToggle').addEventListener('click', () => sheet.classList.add('open'));
+  document.getElementById('navClose').addEventListener('click', () => sheet.classList.remove('open'));
+  sheet.querySelectorAll('a').forEach(a => a.addEventListener('click', () => sheet.classList.remove('open')));
+
+  // ---- services tabs ----
+  const serviceData = [
+    {
+      tag: 'Marketing & Brand',
+      title: 'Marketing & Brand',
+      copy: 'Positioning, messaging, and visual identity work — building a brand that people recognize and remember, from naming through to a full style guide.',
+      tags: ['Brand strategy','Messaging','Visual identity','Style guides']
+    },
+    {
+      tag: 'Digital & Growth',
+      title: 'Digital & Growth',
+      copy: 'Website strategy, SEO fundamentals, and funnel thinking to help a brand get found and convert — practical, not just theoretical.',
+      tags: ['SEO basics','Website strategy','Funnels','Analytics']
+    },
+    {
+      tag: 'Social & Content',
+      title: 'Social & Content',
+      copy: 'Content calendars, captions, and campaign concepts across platforms — built around a consistent voice and a realistic posting cadence.',
+      tags: ['Content calendars','Copywriting','Campaign concepts','Community']
+    },
+    {
+      tag: 'Communications',
+      title: 'Communications',
+      copy: 'Internal and external comms — newsletters, press-style writing, and the kind of clear copy that makes complex things easy to understand.',
+      tags: ['Newsletters','PR writing','Internal comms','Editing']
+    },
+    {
+      tag: 'Business & Digital Organization',
+      title: 'Business & Digital Organization',
+      copy: 'The operational side of creative work — project systems, digital file organization, and workflows that keep a small team or solo practice running smoothly.',
+      tags: ['Project systems','Workflow design','File organization','Tools setup']
+    }
+  ];
+
+  const serviceItems = document.querySelectorAll('.service-item');
+  const panel = document.getElementById('servicePanel');
+
+  function renderService(i){
+    const d = serviceData[i];
+    panel.innerHTML = `
+      <span class="stag">${d.tag}</span>
+      <h3>${d.title}</h3>
+      <p>${d.copy}</p>
+      <ul>${d.tags.map(t => `<li>${t}</li>`).join('')}</ul>
+    `;
+  }
+  renderService(0);
+
+  serviceItems.forEach(item => {
+    item.addEventListener('click', () => {
+      serviceItems.forEach(s => s.classList.remove('active'));
+      item.classList.add('active');
+      renderService(item.dataset.i);
+    });
+  });
+
+  // ---- portfolio filter ----
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.card');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(c => {
+        c.classList.toggle('show', f === 'all' || c.dataset.cat === f);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
